@@ -21,17 +21,17 @@ func partition(nums []int, low, high int) int {
 	return i + 1
 }
 
-func recursiveQuickSort(nums []int, low, high int) []int {
+func quickSort(nums []int, low, high int) []int {
 	if low < high {
 		partitionIndex := partition(nums, low, high)
-		recursiveQuickSort(nums, low, partitionIndex-1)
-		recursiveQuickSort(nums, partitionIndex+1, high)
+		quickSort(nums, low, partitionIndex-1)
+		quickSort(nums, partitionIndex+1, high)
 	}
 	return nums
 }
 
-func quickSort(nums []int) []int {
-	return recursiveQuickSort(nums, 0, len(nums)-1)
+func quickSortStart(nums []int) []int {
+	return quickSort(nums, 0, len(nums)-1)
 }
 
 func main() {
@@ -44,6 +44,6 @@ func main() {
 
 	fmt.Println(nums)
 	fmt.Println("############################")
-	output := quickSort(nums)
+	output := quickSortStart(nums)
 	fmt.Println(output)
 }
